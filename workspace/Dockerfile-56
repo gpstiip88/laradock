@@ -159,17 +159,10 @@ RUN echo "" >> ~/.bashrc && \
 	sed -i 's/\r//' /home/laradock/aliases.sh && \
 	sed -i 's/^#! \/bin\/sh/#! \/bin\/bash/' /home/laradock/aliases.sh
 
-USER root
-RUN echo "" >> ~/.bashrc && \
-    echo "# Load Custom Aliases" >> ~/.bashrc && \
-    echo "source /home/laradock/aliases.sh" >> ~/.bashrc && \
-	echo "" >> ~/.bashrc && \
-	sed -i 's/\r//' /home/laradock/aliases.sh && \
-	sed -i 's/^#! \/bin\/sh/#! \/bin\/bash/' /home/laradock/aliases.sh
-
 #####################################
 # xDebug:
 #####################################
+USER root
 
 ARG INSTALL_XDEBUG=false
 RUN if [ ${INSTALL_XDEBUG} = true ]; then \
@@ -603,7 +596,8 @@ USER root
 ARG INSTALL_IMAGEMAGICK=false
 ENV INSTALL_IMAGEMAGICK ${INSTALL_IMAGEMAGICK}
 RUN if [ ${INSTALL_IMAGEMAGICK} = true ]; then \
-    apt-get install -y --force-yes imagemagick php-imagick \
+    apt-get update -yqq \
+    && apt-get install -y --force-yes imagemagick php-imagick \
 ;fi
 
 #####################################
