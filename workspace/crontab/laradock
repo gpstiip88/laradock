@@ -1,1 +1,2 @@
-* * * * * laradock php /var/www/artisan schedule:run >> /dev/null 2>&1
+* * * * * laradock php /var/www/yello/artisan schedule:run >> /dev/null 2>&1
+* * * * * laradock php /var/www/marbec/artisan schedule:run >> /dev/null 2>&1
