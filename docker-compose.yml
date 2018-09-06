@@ -705,6 +705,34 @@ services:
         - workspace
       tty: true
 
+### VSFTPD Container #############################################
+    vsftpd:
+      build:
+        context: ./vsftpd
+      environment:
+        - FTP_USER=${VSFTPD_USER}
+        - FTP_PASS=${VSFTPD_PASS}
+        - ONLY_UPLOAD=NO
+        - PASV_ENABLE=YES
+        - PASV_ADDRESS=127.0.0.1
+        - PASV_MIN=21200
+        - PASV_MAX=21210
+      depends_on:
+        - vsftpd-data
+      volumes_from:
+        - vsftpd-data
+      ports:
+        - "${VSFTPD_PORT}:21"
+        - "21200-21210:21200-21210"
+
+    vsftpd-data:
+      image: busybox
+      container_name: vsftpd-data
+      volumes_from:
+        - applications
+      volumes:
+        - ${DATA_SAVE_PATH}/vsftpd:/home
+
 ### Networks Setup ############################################
 
 networks:
