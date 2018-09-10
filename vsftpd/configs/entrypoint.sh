@@ -35,12 +35,10 @@ fi
 
 echo "local_umask=$UMASK" >> /etc/vsftpd/vsftpd.conf
 
-/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
-
-
+# mkdir -p /var/www/marbec/storage/app/tenancy/tenants/18bb2eb2236f49299966a4bc4c180dd1/ftp
 # addgroup -S yelloftp_marbec
-# adduser -D -G yelloftp_marbec -h /home/yelloftp_marbec -s /bin/false  yelloftp_marbec
-# chown yelloftp_marbec:yelloftp_marbec /home/yelloftp_marbec/ -R
-
+# adduser -D -G yelloftp_marbec -h /var/www/marbec/storage/app/tenancy/tenants/18bb2eb2236f49299966a4bc4c180dd1/ftp -s /bin/false  yelloftp_marbec
+# chown yelloftp_marbec:yelloftp_marbec /var/www/marbec/storage/app/tenancy/tenants/18bb2eb2236f49299966a4bc4c180dd1/ftp -R
 # echo "yelloftp_marbec:supersecret" | /usr/sbin/chpasswd
-# ln -s /home/yelloftp_marbec/ /var/www/marbec/storage/app/tenancy/tenants/fad589dc6d1c40fa8d2e3d54cea94685/ftp
+
+/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf

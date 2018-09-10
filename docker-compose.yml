@@ -729,7 +729,7 @@ services:
       image: busybox
       container_name: vsftpd-data
       volumes_from:
-        - applications
+        - workspace
       volumes:
         - ${DATA_SAVE_PATH}/vsftpd:/home
 
@@ -777,4 +777,6 @@ volumes:
   elasticsearch-data:
     driver: "local"
   elasticsearch-plugins:
+    driver: "local"
+  vsftpd-data:
     driver: "local"
