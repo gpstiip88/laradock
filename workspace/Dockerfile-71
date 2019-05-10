@@ -743,6 +743,17 @@ RUN if [ ${INSTALL_DUSK_DEPS} = true ]; then \
 ;fi
 
 #####################################
+# wkhtmltopdf:
+#####################################
+
+ARG INSTALL_WKHTMLTOPDF=true
+RUN if [ ${INSTALL_WKHTMLTOPDF} = true ]; then \
+    # Install all dependencies
+    apt-get update && \
+    apt-get install -y fontconfig libfontconfig1 libfreetype6 libpng12-0 libssl1.0.0 libx11-6 libxext6 libxrender1 xfonts-75dpi xfonts-base wget xz-utils \
+;fi
+
+#####################################
 # Check PHP version:
 #####################################
 
