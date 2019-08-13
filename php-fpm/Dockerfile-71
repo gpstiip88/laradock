@@ -382,6 +382,14 @@ RUN if [ ${INSTALL_IMAP} = true ]; then \
     docker-php-ext-install imap \
 ;fi
 
+# UNOCONV:
+#####################################
+ARG INSTALL_UNOCONV=true
+RUN if [ ${INSTALL_UNOCONV} = true ]; then \
+    apt-get update && \
+    apt-get install -y unoconv \
+;fi
+
 #####################################
 # Check PHP version:
 #####################################
