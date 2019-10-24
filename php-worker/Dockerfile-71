@@ -38,13 +38,25 @@ RUN if [ ${INSTALL_ZIP_ARCHIVE} = true ]; then \
 ;fi
 
 # Install all dependencies
-RUN apk add --no-cache \
-xvfb \
-ttf-freefont \
-fontconfig \
-dbus \
-libxrender \
-libxext
+RUN apk --no-cache add bash mc \
+        xvfb \
+        fontconfig \
+        dbus \
+        libxrender \
+        libxext \
+        util-linux \
+        libreoffice-common \
+        libreoffice-writer \
+        ttf-droid-nonlatin \
+        ttf-droid \
+        ttf-dejavu \
+        ttf-freefont \
+        ttf-liberation \
+        poppler-utils \
+    && curl -Ls https://raw.githubusercontent.com/dagwieers/unoconv/master/unoconv -o /usr/bin/unoconv \
+    && chmod +x /usr/bin/unoconv \
+    && rm /usr/bin/python \
+    && ln -s /usr/bin/python3 /usr/bin/python
 
 # fontconfig libfontconfig1 libfreetype6 libpng12-0 libssl1.0.0 libx11-6 libxext6 libxrender1 xfonts-75dpi xfonts-base wget xz-utils \
 
