@@ -85,6 +85,10 @@ ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
 #
     # -- Your awesome modifications go here -- #
 
+#COPY supervisor_reload.sh /etc/periodic/15min/supervisor_reload
+
+COPY php71.ini /usr/local/etc/php/php.ini
+
 #
 #--------------------------------------------------------------------------
 # Check PHP version
