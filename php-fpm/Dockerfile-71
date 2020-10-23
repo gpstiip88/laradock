@@ -387,7 +387,7 @@ RUN if [ ${INSTALL_IMAP} = true ]; then \
 ARG INSTALL_UNOCONV=true
 RUN if [ ${INSTALL_UNOCONV} = true ]; then \
     apt-get update && \
-    apt-get install -y unoconv poppler-utils \
+    apt-get install -y --force-yes unoconv poppler-utils \
 ;fi
 
 #####################################
